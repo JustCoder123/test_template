@@ -34,5 +34,8 @@
                   value_env: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
 
     
+            - debug:
+                var: value_env
+                
             - fail:
                   msg: "task failed"
