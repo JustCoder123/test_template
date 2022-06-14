@@ -30,12 +30,9 @@
 
             - set_fact:
                   value: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
-              environment:
-                  value_env: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
-
-    
+                  
             - debug:
-                var: value_env
-                
+                var: value
+
             - fail:
                   msg: "task failed"
