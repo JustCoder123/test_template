@@ -7,5 +7,5 @@
 
     tasks:
       - name: debuging tasks
-        debug: "{{ value }}"
-
+        debug:
+          var: value 
