@@ -2,10 +2,10 @@
   - hosts: localhost
     gather_facts: yes
 
-    vars:
-      value: ''
+    # vars:
+    #   value: ''
 
     tasks:
       - name: debuging tasks
         debug:
-          var: value 
+          var: ansible_facts["value"]
