@@ -28,11 +28,8 @@
                 force_basic_auth: yes
               register: job_template_output
 
-            - debug:
-                msg: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
-      # - name: checking job id 
-          
-      #   register: previous_job
-
-      # - debug:
-      #     var: previous_job
+            - set_fact:
+                value: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
+    
+            - fail:
+              msg: "task failed"
