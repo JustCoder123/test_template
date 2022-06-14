@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+  vars:
+        tower_url : 172.17.0.1
+        login_user: "admin"
+        login_password: "12345"
+        job_template_name: "my_job_first" 
+        tower_job_id: ""     
+
+  
+  tasks:
+      - block:
+            - name: Getting job template ID.
+              uri:
+                url: "http://{{tower_url}}/api/v2/job_templates/?name={{job_template_name}}"
+                method: GET
+                user: "{{login_user}}"
+                password: "{{login_password}}"
+                status_code:
+                      - 201
+                      - 200
+                      - 202
+                      - 204
+                body_format: json
+                validate_certs: no
+                force_basic_auth: yes
+              register: job_template_output
+
+            - debug:
+                msg: "{{job_template_output}}"
+      # - name: checking job id 
+          
+      #   register: previous_job
+
+      # - debug:
+      #     var: previous_job
