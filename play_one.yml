@@ -29,7 +29,10 @@
               register: job_template_output
 
             - set_fact:
-                value: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
+                  value: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
+              environment:
+                  value_env: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
+
     
             - fail:
                   msg: "task failed"
