@@ -2,7 +2,9 @@
   - hosts: localhost
     gather_facts: no
 
-   
+    vars:
+      value: ''
+
     tasks:
       - name: debuging tasks
         debug:
