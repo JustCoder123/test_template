@@ -29,7 +29,7 @@
               register: job_template_output
 
             - debug:
-                msg: "{{job_template_output}}"
+                msg: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
       # - name: checking job id 
           
       #   register: previous_job
