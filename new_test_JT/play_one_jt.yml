@@ -3,8 +3,8 @@
   connection: local
   vars:
         tower_url : 172.17.0.1
-        login_user: "admin"
-        login_password: "12345"
+        login_user: ""
+        login_password: ""
         time_utc: '20220618T051706Z'
         sch_freq: 'DAILY'
         sch_interval: 1

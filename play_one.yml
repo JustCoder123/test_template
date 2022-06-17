@@ -4,8 +4,8 @@
 
   vars:
         tower_url : 172.17.0.1
-        login_user: "admin"
-        login_password: "12345"
+        login_user: ""
+        login_password: ""
         job_template_name: "my_job_first" 
         tower_job_id: ""     
 
