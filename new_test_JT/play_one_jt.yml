@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+        tower_url : 172.17.0.1
+        login_user: "admin"
+        login_password: "12345"
+        time_utc: '20220618T051706Z'
+        sch_freq: 'DAILY'
+        sch_interval: 1
+        sch_count: 2
+        job_template_id : 25
+        pb_fail_status: "failed"
+        pb_pass_status: "Pass"
+        scheduler_id: 13
+        scheduler_name: 'new_sch___12'
+        
+
+  tasks:
+    - name: creating the variables
+      set_fact:
+          my_vars: {
+                    "id" : 123,
+                    "name": "test_sch",
+                    "user": "super_user",
+                    "project": "test_project_after_run",
+                    "summery": "these variable are for testing purpose only"
+                    }
+      register: set_fact_out
+
+    - debug:
+        var:  my_vars
+
+
+    - include_tasks: play_two_jt.yml
+
+    - include_tasks: play_three_jt.yml

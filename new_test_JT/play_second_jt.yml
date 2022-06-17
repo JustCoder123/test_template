@@ -1,0 +1,50 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+        tower_url : 172.17.0.1
+        login_user: "admin"
+        login_password: "12345"
+        pb_fail_status: "failed"
+        pb_pass_status: "Pass"
+        scheduler_name: 'new_sch___12'
+        
+
+  tasks:
+      - block:
+            - name: "Getting Scheduler ID of the Schedule {{scheduler_name}}"
+              uri:
+                  url: "http://{{tower_url}}/api/v2/schedules/?name={{ scheduler_name }}"
+                  method: GET
+                  user: "{{login_user}}"
+                  password: "{{login_password}}"
+                  force_basic_auth: yes
+                  validate_certs: no
+                  status_code: 200
+              register: scheduler_out
+
+            - debug:
+                msg: "{{scheduler_out.json}}"
+
+            - set_fact:
+                  scheduler_extra_data: "{{scheduler_out.json.results[0].extra_data}}"
+              when: scheduler_out.json.count != 0
+
+            - debug:
+                var: scheduler_extra_data
+              when: scheduler_out.json.count != 0
+
+          
+        rescue:
+
+            - debug: 
+                msg: "Not able to Get the Scheduler, please check the provide details"
+
+            - name: Fault Error.
+              debug:
+                  msg: "{{ ansible_failed_result.msg }}"
+            
+            - set_fact:
+                  pb_status: "{{pb_fail_status}}"
+                  pb_message: "Not able to Get the Scheduler, task failed... with error {{ansible_failed_result.msg}}"
+

@@ -1,0 +1,16 @@
+---
+- block:
+      - debug:
+          var: my_vars
+
+
+      - name: Creating json file from variables
+        copy:
+            content: "{{ my_vars | to_json }}"
+            dest: my_var_file.json
+        register: copy_out
+        delegate_to: localhost
+
+      - debug:
+          var: copy_out
+

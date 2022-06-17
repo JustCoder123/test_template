@@ -1,0 +1,47 @@
+---
+
+
+      - name: setting the path
+        set_fact:
+            path: "./my_var_file.json"
+      - name: getting the file
+        vars:
+            file_data: "{{ lookup('file', path)}}"
+        block:    
+                  - name: adding the variables into the scheduler {{ scheduler_name }}
+                    uri: 
+                        url: "http://{{tower_url}}/api/v2/schedules/{{scheduler_id}}/"
+                        method: PATCH
+                        user: "{{login_user}}"
+                        password: "{{login_password}}"
+                        force_basic_auth: yes
+                        validate_certs: no
+                        headers:
+                            Content-Type: application/json
+                        body_format: json
+                        body: >
+                            {
+                                  "rrule": "DTSTART:{{time_utc}} RRULE:FREQ={{sch_freq}};INTERVAL={{sch_interval}};COUNT={{sch_count}}",
+                                  "name": "{{scheduler_name}}",
+                                  "extra_data": "{{file_data}}",
+                                  "unified_job_template": "{{job_template_id}}",
+                                  "inventory" : null,
+                                  "enabled": true
+                                
+                              }
+                        status_code: 200
+                    register: sch_out
+
+
+        rescue:
+                  - debug: 
+                      msg: "Not able to Cancle the Scheduler, please check the provide details"
+
+                  - name: Fault Error.
+                    debug:
+                        msg: "{{ ansible_failed_result.msg }}"
+                  
+                  - set_fact:
+                        pb_status: "{{pb_fail_status}}"
+                        pb_message: "Scheduler Cancletion Unsuccessfull, task failed... with error {{ansible_failed_result.msg}}"
+                      
