@@ -12,8 +12,8 @@
         job_template_id : 25
         pb_fail_status: "failed"
         pb_pass_status: "Pass"
-        scheduler_id: 13
-        scheduler_name: 'new_sch___12'
+        scheduler_id: 8
+        scheduler_name: 'new_sch'
         
 
   tasks:
