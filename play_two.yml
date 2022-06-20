@@ -8,4 +8,4 @@
     tasks:
       - name: debuging tasks
         debug:
-          var: ansible_facts["value"]
+          var: a

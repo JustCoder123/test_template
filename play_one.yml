@@ -7,7 +7,8 @@
         login_user: ""
         login_password: ""
         job_template_name: "my_job_first" 
-        tower_job_id: ""     
+        tower_job_id: ""   
+        a: 'fail'  
 
   
   tasks:
@@ -30,6 +31,7 @@
 
             - set_fact:
                   value: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
+                  a : "pass"
                   
             - debug:
                 var: value
