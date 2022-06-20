@@ -12,8 +12,8 @@
         job_template_id : 25
         pb_fail_status: "failed"
         pb_pass_status: "Pass"
-        scheduler_id: 8
-        scheduler_name: 'new_sch'
+        scheduler_id: 10
+        scheduler_name: 'new_sch_2'
         file_name: 'my_vars_file.json'
         
 
