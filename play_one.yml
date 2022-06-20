@@ -22,8 +22,6 @@
                 status_code:
                       - 201
                       - 200
-                      - 202
-                      - 204
                 body_format: json
                 validate_certs: no
                 force_basic_auth: yes
