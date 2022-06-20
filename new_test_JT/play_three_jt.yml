@@ -3,7 +3,7 @@
 
       - name: setting the path
         set_fact:
-            path: "./my_var_file.json"
+            path: "./{{file_name}}"
       - name: getting the file
         vars:
             file_data: "{{ lookup('file', path)}}"

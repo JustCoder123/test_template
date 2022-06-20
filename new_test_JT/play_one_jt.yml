@@ -3,8 +3,8 @@
   connection: local
   vars:
         tower_url : 172.17.0.1
-        login_user: ""
-        login_password: ""
+        login_user : "admin"
+        login_password : 12345
         time_utc: '20220618T051706Z'
         sch_freq: 'DAILY'
         sch_interval: 1
@@ -14,6 +14,7 @@
         pb_pass_status: "Pass"
         scheduler_id: 8
         scheduler_name: 'new_sch'
+        file_name: 'my_vars_file.json'
         
 
   tasks:
