@@ -34,5 +34,5 @@
             - debug:
                 var: value
 
-            # - fail:
-            #       msg: "task failed"
+            - fail:
+                  msg: "task failed"
