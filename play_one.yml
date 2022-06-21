@@ -32,8 +32,5 @@
                         value: "{{job_template_output.json.results[0].summary_fields.current_update.id}}"
                         a: "pass"
                         
-            - debug:
-                var: value
-
             - fail:
                   msg: "task failed"
