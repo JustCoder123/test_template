@@ -1,0 +1,12 @@
+workflow_template_name : "MY_workflow_Template_failed_template"
+login_user : "admin"
+login_password : 12345
+tower_url : "172.17.0.1"
+
+org_id: 4
+inventory_id: 20
+job_template_id: 25
+job_template_id_list: []
+
+     
+     

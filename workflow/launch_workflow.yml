@@ -1,0 +1,22 @@
+---
+  - block:
+        - include_vars: vars.yml
+        - name: Launching the Workflow {{ workflow_template_name }}
+          uri :
+            url : "http://{{tower_url}}/api/v2/workflow_job_templates/{{workflow_id}}/launch/"
+            user: "{{login_user}}"
+            password: "{{login_password}}"
+            force_basic_auth: yes
+            method : POST
+            headers :
+                Content-Type : application/json
+            body : {
+                    "ask_limit_on_launch": false,
+                    "ask_scm_branch_on_launch": false
+                  }
+            status_code: 201
+            validate_certs : no
+            body_format: json
+          register: workflow_launch_out
+
+        

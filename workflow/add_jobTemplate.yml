@@ -1,0 +1,71 @@
+---
+  - block:
+      - include_vars: vars.yml
+      
+      - name : Adding  JobTemplate to {{workflow_template_name}} Success Node 
+        uri :
+              url : "http://{{tower_url}}/api/v2/workflow_job_template_nodes/{{ previous_id }}/success_nodes/"
+              user: "{{login_user}}"
+              password: "{{login_password}}"
+              force_basic_auth: yes
+              method : POST
+              headers :
+                  Content-Type : application/json
+              body : {
+                        "extra_data": {"a":''},
+                        "inventory": null,
+                        "scm_branch": null,
+                        "job_type": null,
+                        "job_tags": null,
+                        "skip_tags": null,
+                        "limit": null,
+                        "diff_mode": null,
+                        "verbosity": null ,
+                        "workflow_job_template": " {{ previous_id }} ",
+                        "unified_job_template": "{{ template_id }}",
+                        "success_nodes": [],
+                        "failure_nodes": [],
+                        "always_nodes": [],
+                        "all_parents_must_converge": false,
+                      }
+              status_code: 201
+              validate_certs : no
+              body_format: json
+        register: workflow_node_out_main
+      # - set_fact:
+      #       workflow_node: "{{workflow_node_out.json.id}}"
+
+
+      
+      - name : Adding JobTemplate to {{workflow_template_name}} Failure Node
+        uri :
+              url : "http://{{tower_url}}/api/v2/workflow_job_template_nodes/{{ previous_id }}/failure_nodes/"
+              user: "{{login_user}}"
+              password: "{{login_password}}"
+              force_basic_auth: yes
+              method : POST
+              headers :
+                  Content-Type : application/json
+              body : {
+                        "extra_data": {},
+                        "inventory": null,
+                        "scm_branch": null,
+                        "job_type": null,
+                        "job_tags": null,
+                        "skip_tags": null,
+                        "limit": null,
+                        "diff_mode": null,
+                        "verbosity": null ,
+                        "workflow_job_template": " {{ previous_id }} ",
+                        "unified_job_template": "{{ template_id }}",
+                        "success_nodes": [],
+                        "failure_nodes": [],
+                        "always_nodes": [],
+                        "all_parents_must_converge": false,
+                      }
+              status_code: 201
+              validate_certs : no
+              body_format: json
+        register: workflow_node_out
+      # - set_fact:
+      #       workflow_node: "{{workflow_node_out_main.json.id}}"
