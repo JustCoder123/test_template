@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+      - block:
+          - include_tasks: workflow/workflow_creation_test.yml
+            vars:
+                workflow_template_name: 'my_new_testing_workflow'
+                job_template_name_list: 
+                        - my_job_second
+                        - MY_FIRST_JOBTEMP
+                        - MY_SECOND_JOBTEMP
+                        - test_new_template
