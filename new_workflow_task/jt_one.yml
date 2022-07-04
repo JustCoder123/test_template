@@ -12,7 +12,8 @@
         
         - name: setting the value of the varible to be access throught out the play
           set_stats:
-                  data:  current_node_data: "{{current_node}}"
+                  data: 
+                     current_node_data: "{{current_node}}"
 
         - debug:
             var: current_node_data
