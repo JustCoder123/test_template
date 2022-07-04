@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+      current_node: 'Workflow Node'
+
+  tasks:
+        - name: displaying current node value 
+          debug:
+              var: current_node
+        
+        - name: setting the value of the varible to be access throught out the play
+          set_fact:
+            current_node: "{{current_node}}"
+
+        
