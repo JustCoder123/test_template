@@ -4,7 +4,7 @@
 
   vars: 
       current_node_JT: 'jobtemplate_two'
-      current_node: ''
+      current_node: "{{current_node}}"
       current_node_jt: ''
       
   tasks:
