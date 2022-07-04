@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+      - name: getting workflow varible from play
+        debug: 
+            var: current_node
+
+      - debug: 
+            msg: " task fail and error handle successfully"  

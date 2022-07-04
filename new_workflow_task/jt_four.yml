@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars: 
+      current_node_jt: 'jobtemplate_four'
+      current_node: "{{current_node_data}}"
+
+  tasks:
+      - name: getting workflow varible from play
+        debug: 
+            var: current_node
+
+      - name: setting varible for globle varible
+        set_stats:
+                  data: 
+                       current_node_jt: "{{current_node_jt}}"
+
+      - debug:
+          var: current_node_jt
