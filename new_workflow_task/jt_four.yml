@@ -16,11 +16,13 @@
         debug: 
             var: current_node
         when: current_node == 'workflow Node'
-        
+
+      - debug:
+          var: current_node_jt
+
       - name: setting varible for globle varible
         set_stats:
                   data: 
                        current_node_jt: "{{current_node_jt}}"
 
-      - debug:
-          var: current_node_jt
+     

@@ -2,6 +2,9 @@
 - hosts: localhost
   connection: local
 
+  vars:
+       current_node: "{{current_node_data}}"
+
   tasks:
       - name: getting workflow varible from play
         debug: 
