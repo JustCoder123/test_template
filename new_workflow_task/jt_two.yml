@@ -10,6 +10,12 @@
       - name: getting workflow varible from play
         debug: 
             var: current_node
+        when: current_node == 'Workflow Node'
+
+      - name: getting workflow varible from play when constion is not true
+        debug: 
+            var: current_node
+        when: current_node == 'workflow Node'
 
       - name: setting varible for globle varible
         set_stats:
