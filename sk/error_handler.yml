@@ -1,0 +1,11 @@
+---
+- name: error handler
+  hosts: localhost
+  gather_facts: true
+  vars_files:
+    - vars/variables.yml
+
+  tasks:
+  - debug:
+      msg: "{{ previous_jobid }}"
+    when: previous_jobid is defined  

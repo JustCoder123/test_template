@@ -1,0 +1,15 @@
+---
+- name: main
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+  - set_stats:
+      data:
+        previous_jobid: "{{ tower_job_id }}"
+
+  - set_stats:
+      data:
+        vcenter: "{{ vcenter_info }}"
+
+ 

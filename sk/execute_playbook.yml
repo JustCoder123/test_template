@@ -1,0 +1,3 @@
+---
+- import_playbook: stage1.yml
+  when: stage_name is undefined #and stage_name=='stage1'
