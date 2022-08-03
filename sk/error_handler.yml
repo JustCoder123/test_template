@@ -1,7 +1,6 @@
 ---
 - name: error handler
   hosts: localhost
-  gather_facts: true
   # vars_files:
   #   - vars/variables.yml
 
