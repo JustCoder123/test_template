@@ -1,3 +1,6 @@
 ---
 - import_playbook: stage1.yml
+  vars:
+      vcenter: "{{vcenter}}"
+      previous_jobid: "{{previous_jobid}}"
   when: stage_name is undefined #and stage_name=='stage1'
