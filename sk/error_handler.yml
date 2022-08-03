@@ -8,4 +8,4 @@
   tasks:
   - debug:
       msg: "{{ previous_jobid }}"
-    when: previous_jobid is defined  
+    #when: previous_jobid is defined  
