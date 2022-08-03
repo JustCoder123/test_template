@@ -6,9 +6,9 @@
   #   - vars/variables.yml
 
   tasks:
-  - debug:
-      var : vcenter.in_scope|bool
-      
-  - debug:
-      msg: "{{ previous_jobid }}"
-    #when: previous_jobid is defined  
+    - debug:
+        var : vcenter
+
+    - debug:
+        msg: "{{ previous_jobid }}"
+      #when: previous_jobid is defined  
