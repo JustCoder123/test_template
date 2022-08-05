@@ -1,0 +1,17 @@
+---
+- name: error handler
+  hosts: localhost
+ 
+  tasks:
+    - debug:
+        msg: "hiiiii" 
+
+    - debug:
+        var : vcenter
+        
+    - debug:
+        var: vcenter.in_scope|bool
+
+    - debug:
+        msg: "{{ previous_jobid }}"
+     
