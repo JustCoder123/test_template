@@ -3,10 +3,10 @@
   connection: local
 
   tasks:
-      - set_stat:
+      - set_stats:
             data: 
                 vcenter: "{{vcenter_info}}"
 
-      - set_stat:
+      - set_stats:
           data: 
               previous_jobid: "{{tower_job_id}}"
