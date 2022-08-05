@@ -1,8 +1,8 @@
 ---
 - hosts: localhost
   tasks:
-      - set_fact:
-          vcenter: "{{vcenter}}"
+      - debug:
+          msg: "{{vcenter}}"
 #searchvm
 - import_playbook: error_handler.yml
   when: (vcenter.in_scope|bool) and "'search' in (vcenter.actions)"
