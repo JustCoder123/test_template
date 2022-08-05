@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+      - set_stat:
+            data: 
+                vcenter: "{{vcenter_info}}"
+
+      - set_stat:
+          data: 
+              previous_jobid: "{{tower_job_id}}"
